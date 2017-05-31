@@ -1,7 +1,5 @@
 package com.chhaichivon.crudspringhibernatevaadinpostgres.app.models;
 
-import org.hibernate.annotations.GeneratorType;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 
@@ -29,6 +27,9 @@ public class Staff {
 		this.email = email;
 	}
 
+	public Staff(int id){
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}
@@ -59,5 +60,15 @@ public class Staff {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Staff{" +
+				"id=" + id +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", email='" + email + '\'' +
+				'}';
 	}
 }

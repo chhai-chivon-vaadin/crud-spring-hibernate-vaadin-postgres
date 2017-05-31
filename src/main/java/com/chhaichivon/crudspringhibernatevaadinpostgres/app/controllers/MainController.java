@@ -1,5 +1,7 @@
 package com.chhaichivon.crudspringhibernatevaadinpostgres.app.controllers;
 
+import com.chhaichivon.crudspringhibernatevaadinpostgres.app.repositories.StaffRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 
-
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/home")
 	public String home(){
 		System.out.print("Home Work");
 		return "index";
