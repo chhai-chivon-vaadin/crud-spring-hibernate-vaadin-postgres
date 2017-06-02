@@ -8,8 +8,8 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "staff")
-public class Staff {
+@Table(name = "staffs")
+public class Staffs {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,13 +21,13 @@ public class Staff {
 	@Column(name = "email")
 	private String email;
 
-	public Staff(String firstName, String lastName, String email) {
+	public Staffs(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 	}
 
-	public Staff(int id){
+	public Staffs(int id){
 		this.id = id;
 	}
 	public int getId() {

@@ -1,6 +1,6 @@
 package com.chhaichivon.crudspringhibernatevaadinpostgres.app.controllers;
 
-import com.chhaichivon.crudspringhibernatevaadinpostgres.app.models.Staff;
+import com.chhaichivon.crudspringhibernatevaadinpostgres.app.models.Staffs;
 import com.chhaichivon.crudspringhibernatevaadinpostgres.app.service.IStaffService;
 
 import java.util.HashMap;
@@ -28,28 +28,28 @@ public class StaffController {
 
 	@RequestMapping(value = "/delete/{id}")
 	public String delete(@PathVariable("id") int id){
-		Staff staff = new Staff(id);
+		Staffs staff = new Staffs(id);
 		iStaffService.deleteStaff(staff);
 		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/update/{id}")
 	public String update(@PathVariable("int") int id, ModelMap modelMap){
-		Staff staff;
+		Staffs staff;
 		staff = iStaffService.getStaffById(id);
 		modelMap.addAttribute("Staff",staff);
 		return "staff-update";
 	}
 
 	@RequestMapping(value = "/edit",method = RequestMethod.POST)
-	public String edit(Staff staff){
+	public String edit(Staffs staff){
 		iStaffService.updateStaff(staff);
 		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Staff staff){
-		Staff staff1 = new Staff("firstname","lastname","email");
+	public String save(Staffs staff){
+		Staffs staff1 = new Staffs("firstname","lastname","email");
 		iStaffService.saveStaff(staff1);
 		System.out.print("Add Staff "+ staff.toString());
 		return "redirect:/";
@@ -62,7 +62,7 @@ public class StaffController {
 
 	@RequestMapping("/")
 	public String index(ModelMap modelMap){
-		List<Staff> staffs = iStaffService.listAllStaff();
+		List<Staffs> staffs = iStaffService.listAllStaff();
 		modelMap.addAttribute("Staff", staffs);
 		return "staff";
 	}

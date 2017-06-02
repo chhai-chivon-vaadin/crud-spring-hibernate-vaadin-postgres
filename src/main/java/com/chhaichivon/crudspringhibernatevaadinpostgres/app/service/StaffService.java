@@ -1,6 +1,6 @@
 package com.chhaichivon.crudspringhibernatevaadinpostgres.app.service;
 
-import com.chhaichivon.crudspringhibernatevaadinpostgres.app.models.Staff;
+import com.chhaichivon.crudspringhibernatevaadinpostgres.app.models.Staffs;
 import com.chhaichivon.crudspringhibernatevaadinpostgres.app.repositories.StaffRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,28 +17,28 @@ public class StaffService implements IStaffService{
 	private StaffRepo staffRepo;
 
 	@Override
-	public Staff getStaffById(int id) {
+	public Staffs getStaffById(int id) {
 		staffRepo.getStaffById(id);
 		return null;
 	}
 
 	@Override
-	public void saveStaff(Staff staff) {
+	public void saveStaff(Staffs staff) {
 		staffRepo.saveStaff(staff);
 	}
 
 	@Override
-	public void updateStaff(Staff staff) {
+	public void updateStaff(Staffs staff) {
 		staffRepo.updateStaff(staff);
 	}
 
 	@Override
-	public void deleteStaff(Staff staff) {
+	public void deleteStaff(Staffs staff) {
 		staffRepo.deleteStaff(staff);
 	}
 
 	@Override
-	public List<Staff> listAllStaff() {
+	public List<Staffs> listAllStaff() {
 		return staffRepo.listAllStaff();
 	}
 }

@@ -1,6 +1,6 @@
 package com.chhaichivon.crudspringhibernatevaadinpostgres.app.repositories;
 
-import com.chhaichivon.crudspringhibernatevaadinpostgres.app.models.Staff;
+import com.chhaichivon.crudspringhibernatevaadinpostgres.app.models.Staffs;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,24 +24,24 @@ public class StaffRepo {
 		return sessionFactory.getCurrentSession();
 	}
 
-	public void saveStaff(Staff  staff){
+	public void saveStaff(Staffs staff){
 		getSession().save(staff);
 	}
 
-	public void updateStaff(Staff staff){
+	public void updateStaff(Staffs staff){
 		getSession().update(staff);
 	}
 
-	public void deleteStaff(Staff staff){
+	public void deleteStaff(Staffs staff){
 		getSession().delete(staff);
 	}
 
-	public Staff getStaffById(int id){
-		return getSession().get(Staff.class, id);
+	public Staffs getStaffById(int id){
+		return getSession().get(Staffs.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Staff> listAllStaff(){
+	public List<Staffs> listAllStaff(){
 		return getSession().createQuery("from Staff").list();
 	}
 }

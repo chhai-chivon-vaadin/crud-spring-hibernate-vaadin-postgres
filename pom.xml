@@ -89,6 +89,16 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>2017.4.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jcommon</artifactId>
+			<version>1.0.15</version>
+		</dependency>
 
 	</dependencies>
 
