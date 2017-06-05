@@ -3,7 +3,7 @@ package com.chhaichivon.crudspringhibernatevaadinpostgres.app.models;
 import javax.persistence.*;
 
 /**
- * Created by Kan-Chanproseth on 5/30/2017.
+ * Created by Chhai Chivon on 5/30/2017.
  */
 @Entity
 @Table(name = "role")

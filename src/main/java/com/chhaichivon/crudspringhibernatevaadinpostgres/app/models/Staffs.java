@@ -1,6 +1,5 @@
 package com.chhaichivon.crudspringhibernatevaadinpostgres.app.models;
 
-
 import javax.persistence.*;
 
 /**
@@ -8,67 +7,74 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "staffs")
+@Table(name = "staffs_tbl")
 public class Staffs {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Column(name = "first_name")
-	private String firstName;
-	@Column(name = "last_name")
-	private String lastName;
-	@Column(name = "email")
-	private String email;
+		@Id
+		@GeneratedValue(generator="staff_id", strategy=GenerationType.SEQUENCE)
+		@Column(name="staff_id")
+		private long staffId;
 
-	public Staffs(String firstName, String lastName, String email) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-	}
+		@Column(name="first_name")
+		private String firstName;
 
-	public Staffs(int id){
-		this.id = id;
-	}
-	public int getId() {
-		return id;
-	}
+		@Column(name = "last_name")
+		private String lastName;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+		@Column(name = "email")
+		private String email;
 
-	public String getFirstName() {
-		return firstName;
-	}
+		@Column(name="img_url")
+		private String img;
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+		@Column(name="status")
+		private Boolean status;
 
-	public String getLastName() {
-		return lastName;
-	}
+		public long getStaffId() {
+			return staffId;
+		}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+		public void setStaffId(long staffId) {
+			this.staffId = staffId;
+		}
 
-	public String getEmail() {
-		return email;
-	}
+		public String getFirstName() {
+			return firstName;
+		}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
 
-	@Override
-	public String toString() {
-		return "Staff{" +
-				"id=" + id +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", email='" + email + '\'' +
-				'}';
-	}
+		public String getLastName() {
+			return lastName;
+		}
+
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public String getImg() {
+			return img;
+		}
+
+		public void setImg(String img) {
+			this.img = img;
+		}
+
+		public Boolean getStatus() {
+			return status;
+		}
+
+		public void setStatus(Boolean status) {
+			this.status = status;
+		}
 }

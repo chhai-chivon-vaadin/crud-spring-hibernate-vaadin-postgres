@@ -1,7 +1,8 @@
 package com.chhaichivon.crudspringhibernatevaadinpostgres.app.controllers;
 
 import com.chhaichivon.crudspringhibernatevaadinpostgres.app.models.Staffs;
-import com.chhaichivon.crudspringhibernatevaadinpostgres.app.service.IStaffService;
+import com.chhaichivon.crudspringhibernatevaadinpostgres.app.service.StaffService;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,76 +12,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Created by ChhaiChivon on 5/30/2017.
+ * Created by Chhai Chivon on 5/30/2017.
  */
 
 @Controller
+@RequestMapping(value = "/staff")
 public class StaffController {
 
 	@Autowired
-	private IStaffService iStaffService;
-
-	@RequestMapping(value = "/delete/{id}")
-	public String delete(@PathVariable("id") int id){
-		Staffs staff = new Staffs(id);
-		iStaffService.deleteStaff(staff);
-		return "redirect:/";
-	}
-
-	@RequestMapping(value = "/update/{id}")
-	public String update(@PathVariable("int") int id, ModelMap modelMap){
-		Staffs staff;
-		staff = iStaffService.getStaffById(id);
-		modelMap.addAttribute("Staff",staff);
-		return "staff-update";
-	}
-
-	@RequestMapping(value = "/edit",method = RequestMethod.POST)
-	public String edit(Staffs staff){
-		iStaffService.updateStaff(staff);
-		return "redirect:/";
-	}
-
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Staffs staff){
-		Staffs staff1 = new Staffs("firstname","lastname","email");
-		iStaffService.saveStaff(staff1);
-		System.out.print("Add Staff "+ staff.toString());
-		return "redirect:/";
-	}
-
-	@RequestMapping(value = "/add-staff")
-	public String add(){
-		return "add-staff";
-	}
-
-	@RequestMapping("/")
-	public String index(ModelMap modelMap){
-		List<Staffs> staffs = iStaffService.listAllStaff();
-		modelMap.addAttribute("Staff", staffs);
-		return "staff";
-	}
-
+	private StaffService staffService;
 
 	@RequestMapping(value = "/list",method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> list(){
 		Map<String, Object> map = new HashMap<>();
-		if(!(iStaffService.listAllStaff().isEmpty())){
-			responseSuccess(map,iStaffService.listAllStaff());
+		if(!(staffService.getAllStaffs().isEmpty())){
+			responseSuccess(map,staffService.getAllStaffs());
 		}else{
 			responseFail(map);
 		}
 		return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
 	}
 
-	public Map<String, Object> responseSuccess(Map<String, Object> map, Object object){
-		map.put("DATA" , object);
+	public Map<String, Object> responseSuccess(Map<String, Object> map, List<Staffs> objectList){
+		map.put("DATA" , objectList);
 		map.put("STATUS",true);
 		map.put("MESSAGE","SUCCESS");
 		return map;
